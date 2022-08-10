@@ -1,0 +1,29 @@
+package leetcode_202205;
+
+import java.util.Arrays;
+
+/**
+ * https://leetcode.cn/problems/unique-substrings-in-wraparound-string/
+ *
+ * @author fanghao on 2022/5/25
+ */
+public class Topic_467findSubstringInWraproundString {
+    public int findSubstringInWraproundString(String p) {
+        int[] dp = new int[26];
+        int k = 0;
+        for (int i = 0; i < p.length(); i++){
+            if(i > 0 && (p.charAt(i) - p.charAt(i - 1) + 26) % 26 == 1){
+                k++;
+            }else{
+                k = 1;
+            }
+            dp[p.charAt(i) - 'a'] = Math.max(dp[p.charAt(i) - 'a'], k);
+        }
+        return Arrays.stream(dp).sum();
+    }
+
+    public static void main(String[] args) {
+        Topic_467findSubstringInWraproundString solution = new Topic_467findSubstringInWraproundString();
+        System.out.println(solution.findSubstringInWraproundString("zab"));
+    }
+}
