@@ -23,26 +23,37 @@ public class S_isBalanced {
             this.right = right;
         }
     }
-    public boolean isBalanced(TreeNode node){
-        return process(node).isBalanced;
+    public boolean isBalanced(TreeNode root) {
+        return process(root).isBalanced;
     }
-    public class ReturnType{
+
+    public class Info{
         public boolean isBalanced;
         public int height;
-        public ReturnType(boolean isB, int height){
-            isBalanced = isB;
-            this.height = height;
+
+        public Info(boolean i, int h) {
+            isBalanced = i;
+            height = h;
         }
     }
-    private ReturnType process(TreeNode node) {
-        if (node == null){
-            return new ReturnType(true, 0);
+
+    public Info process(TreeNode x) {
+        if(x == null) {
+            return new Info(true, 0);
         }
-        ReturnType leftData = process(node.left);
-        ReturnType rightData = process(node.right);
-        int height = Math.max(leftData.height, rightData.height) + 1;
-        boolean isBalanced = leftData.isBalanced && rightData.isBalanced
-                && Math.abs(leftData.height - rightData.height) < 2;
-        return new ReturnType(isBalanced, height);
+        Info leftInfo = process(x.left);
+        Info rightInfo = process(x.right);
+        int height = Math.max(leftInfo.height, rightInfo.height)  + 1;
+        boolean isBalanced = true;
+        if(!leftInfo.isBalanced) {
+            isBalanced = false;
+        }
+        if(!rightInfo.isBalanced) {
+            isBalanced = false;
+        }
+        if(Math.abs(leftInfo.height - rightInfo.height) > 1) {
+            isBalanced = false;
+        }
+        return new Info(isBalanced, height);
     }
 }
