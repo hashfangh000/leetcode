@@ -37,6 +37,6 @@ public class Solution_53search {
     public static void main(String[] args) {
         Solution_53search solution = new Solution_53search();
         int[] nums = {3,3,3,6,9,15,23};
-        System.out.println(solution.binarySearch(nums, 3,true));
+        System.out.println(solution.search(nums, 3));
     }
 }
