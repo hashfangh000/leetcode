@@ -14,11 +14,11 @@ public class Hot_15threeSum {
             return ans;
         }
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i++){
-            if (nums[i] > 0){
+        for (int i = 0; i < nums.length; i++){      //i 是 三元组中的第一个数
+            if (nums[i] > 0){       //第一个数大于0 后面都大于0 相加肯定不为0
                 break;
             }
-            if (i > 0 && nums[i] == nums[i - 1]){
+            if (i > 0 && nums[i] == nums[i - 1]){       //第一个数用过了，就不能再用了
                 continue;
             }
             int left = i + 1;
@@ -45,9 +45,9 @@ public class Hot_15threeSum {
                     }
                     left++;
                     right--;
-                }else if (sum < 0){
+                }else if (sum < 0){             //说明当前sum比较小 要加大的数
                     left++;
-                }else if (sum > 0){
+                }else if (sum > 0){             //说明当前sum比较大，要加小的数
                     right--;
                 }
             }
