@@ -15,7 +15,7 @@ public class Hot_23mergeKLists {
          ListNode(int val) { this.val = val; }
          ListNode(int val, ListNode next) { this.val = val; this.next = next; }
      }
-
+    /*
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0){
             return null;
@@ -26,7 +26,23 @@ public class Hot_23mergeKLists {
             l1 = mergeTwoLists(l1, lists[i]);
         }
         return l1;
+    }*/
+    //分治合并
+    public ListNode mergeKLists(ListNode[] lists) {
+        return merge(lists, 0, lists.length - 1);
     }
+
+    private ListNode merge(ListNode[] lists, int l, int r) {
+        if (l == r){
+            return lists[l];
+        }
+        if (l > r){
+            return null;
+        }
+        int mid = (l + r) >> 1;
+        return mergeTwoLists(merge(lists, l, mid), merge(lists, mid + 1, r));
+    }
+
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null){
             return list2;
