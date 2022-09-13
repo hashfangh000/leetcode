@@ -11,14 +11,13 @@ public class ED_1608specialArray {
     public int specialArray(int[] nums) {
         Arrays.sort(nums);
         int n = nums.length;
-        for (int i = 0, j = n - 1; i < j; i++, j--) {
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
+        if(nums[0] >= nums.length){
+            return n;
         }
-        for (int i = 1; i <= n; ++i) {
-            if (nums[i - 1] >= i && (i == n || nums[i] < i)) {
-                return i;
+        int res = 0;
+        for (int i = 1; i < n; ++i) {
+            if (nums[i] >= (res = n - i) && nums[i - 1] < res) {
+                return res;
             }
         }
         return -1;
