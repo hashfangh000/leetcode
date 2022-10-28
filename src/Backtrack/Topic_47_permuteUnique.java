@@ -71,7 +71,7 @@ public class Topic_47_permuteUnique {
         }
     public static void main(String[] args) {
         Topic_47_permuteUnique solution = new Topic_47_permuteUnique();
-        List<List<Integer>> ans = solution.permuteUnique(new int[]{1, 1, 2, 2});
+        List<List<Integer>> ans = solution.permuteUnique(new int[]{1, 1, 2});
         for (List<Integer> an : ans) {
             for (Integer integer : an) {
                 System.out.print(integer + " ,");
