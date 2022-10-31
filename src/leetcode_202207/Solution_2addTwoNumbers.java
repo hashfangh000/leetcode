@@ -16,16 +16,29 @@ public class Solution_2addTwoNumbers {
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if (l1 == null){
-          return null;
-        } if(l2 == null){
-            return null;
-        }
-        l1.next = addTwoNumbers(l1.next, l2);
-        l1.next = addTwoNumbers(l1, l2.next);
-        int sum = 0;
-        sum += (l1.val + l2.val) / 10;
-        l1.val = (l1.val + l2.val) % 10;
-        return l1;
+         int carry = 0;
+         ListNode ans = new ListNode(-1);
+         ListNode p = ans;
+         while(l1 != null || l2 != null){        //时间：O(max(m, n))， 空间 ：O(1)
+             int x = l1 == null ? 0 : l1.val;
+             int y = l2 == null ? 0 : l2.val;
+             int sum = x + y + carry;
+
+             carry = sum / 10;
+             sum = sum % 10;
+             p.next = new ListNode(sum);
+             p = p.next;
+             if (l1 != null){
+                 l1 = l1.next;
+             }
+             if (l2 != null){
+                 l2 = l2.next;
+             }
+         }
+         if (carry != 0){
+             p.next = new ListNode(carry);
+         }
+
+         return ans.next;
     }
 }
