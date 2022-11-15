@@ -26,6 +26,6 @@ public class Hot_53maxSubArray {
     }
 
     public static void main(String[] args) {
-        System.out.println(maxSubArray(new int[]{5,4,-1,7,8}));
+        System.out.println(maxSubArray(new int[]{-2, 1, -3}));
     }
 }

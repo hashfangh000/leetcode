@@ -11,10 +11,10 @@ import java.util.Queue;
  * @author fanghao on 2022/5/10
  */
 public class Topic_207canFinish {
-    List<List<Integer>> edges;
-    int[] indegree;
-    int index = 0;
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    static List<List<Integer>> edges;
+    static int[] indegree;
+    static int index = 0;
+    public static boolean canFinish(int numCourses, int[][] prerequisites) {
         edges = new ArrayList<List<Integer>>();
         for (int i = 0; i < numCourses; i++){
             edges.add(new ArrayList<>());
@@ -44,5 +44,10 @@ public class Topic_207canFinish {
             return false;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        int[][] prerequisites = {{3,0},{3,1},{4,1},{4,2},{5,3},{5,4}};
+        canFinish(6, prerequisites);
     }
 }
