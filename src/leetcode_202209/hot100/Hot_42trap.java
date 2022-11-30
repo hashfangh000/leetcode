@@ -14,7 +14,7 @@ package leetcode_202209.hot100;
  * 想加即可
  **/
 public class Hot_42trap {
-    public int trap(int[] height) {
+    public static int trap(int[] height) {
         if(height == null || height.length == 0){
             return 0;
         }
@@ -34,5 +34,10 @@ public class Hot_42trap {
             ans += Math.min(leftMax[i], rightMax[i]) - height[i];
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+        trap(height);
     }
 }
